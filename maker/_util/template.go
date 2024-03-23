@@ -6,11 +6,23 @@ import (
 	"io/ioutil"
 	"os"
 	"text/template"
+	"time"
 )
 
+func Time() string {
+	currentTime := time.Now()
+	currentTimeString := currentTime.Format("2006-01-02 15:04:05")
+	return currentTimeString
+}
+
 func Render(tmplFile string, outputFile string, data any) {
+
+	funcMap := template.FuncMap{
+		"Time": Time,
+	}
+
 	var buffer bytes.Buffer
-	tmpl, err := template.New(tmplFile).ParseFiles(tmplFile)
+	tmpl, err := template.New(tmplFile).Funcs(funcMap).ParseFiles(tmplFile)
 	if err != nil {
 		fmt.Println("Error parsing template:", err)
 		os.Exit(1)
