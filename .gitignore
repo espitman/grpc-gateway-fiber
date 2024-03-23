@@ -1,0 +1,8 @@
+/client_*.go
+/handler_*.go
+/router_*.go
+/main.go
+/router.go
+
+/maker/generator/main.go
+/maker/service/*.yaml
