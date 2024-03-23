@@ -38,7 +38,8 @@ func new{{.HandlerNameUpper}}(pb {{.PB}}.{{.ClientNameUpper}}) *{{.HandlerName}}
 // @Success 200 {object} {{$.PB}}.{{.Out}}
 // @Router /api/v1/{{$.Name}}/{{.SwaggerRoute}} [{{.Method}}]
 func (h *{{$.HandlerName}}) {{.Name}}(c *fiber.Ctx) error {
-	header := metadata.New(map[string]string{"authorization": "saeed"})
+	reqHeaders := c.GetReqHeaders()
+	header := metadata.New(map[string]string{"authorization": reqHeaders["Authorization"][0]})
 	ctx := metadata.NewOutgoingContext(c.Context(), header)
 	var reqDto {{$.PB}}.{{.In}}
 	{{- if .Query }}
@@ -54,7 +55,7 @@ func (h *{{$.HandlerName}}) {{.Name}}(c *fiber.Ctx) error {
 	if err != nil {
 		st, _ := status.FromError(err)
 		log.Println("err:", st.Code(), st.Message(), st.Details())
-		return c.Status(fiber.StatusBadRequest).Send(nil)
+		return c.Status(fiber.StatusBadRequest).SendString(err.Error())
 	}
 	return c.JSON(res)
 }
