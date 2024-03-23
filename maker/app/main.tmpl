@@ -21,14 +21,14 @@ import (
 
 func main() {
 	app := fiber.New()
-    {{ range .Handlers }}
+    {{- range .Handlers }}
 	{{.ClientName}} := new{{.ClientNameUpper}}()
 	{{.HandlerName}} := new{{.HandlerNameUpper}}({{.ClientName}})
-    {{end}}
+    {{- end }}
 	router := newRouter(
-	    {{ range .Handlers }}
+	    {{- range .Handlers }}
 		{{.HandlerName}},
-		{{end}}
+		{{- end }}
 	)
 	router.serve(app)
 	log.Fatal(app.Listen(":8083"))

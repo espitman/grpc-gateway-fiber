@@ -8,30 +8,28 @@ import (
 )
 
 type router struct {
-    {{ range .Handlers }}
+    {{- range .Handlers }}
 	{{.HandlerName}} *{{.HandlerName}}
-	{{end}}
+	{{- end }}
 }
 
 func newRouter(
-    {{ range .Handlers }}
+    {{- range .Handlers }}
     {{.HandlerName}} *{{.HandlerName}},
-    {{end}}
+    {{- end }}
 ) *router {
 	return &router{
-        {{ range .Handlers }}
+        {{- range .Handlers }}
 		{{.HandlerName}}: {{.HandlerName}},
-        {{end}}
+        {{- end }}
 	}
 }
 
 func (r *router) serve(app *fiber.App) {
 	api := app.Group("/api")
 	v1 := api.Group("/v1")
-
-    r.swaggerRouter(app)
-
-    {{ range .Handlers }}
+	r.swaggerRouter(app)
+    {{- range .Handlers }}
 	r.{{.RouterName}}(v1.Group("/{{.Name}}"))
-	{{end}}
+	{{- end}}
 }
