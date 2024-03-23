@@ -26,11 +26,9 @@ func (h *{{$.HandlerName}}) {{.Name}}(c *fiber.Ctx) error {
 	ctx := metadata.NewOutgoingContext(c.Context(), header)
 
 	var reqDto {{$.PB}}.{{.In}}
-	_ = c.QueryParser(&reqDto)
-	_ = c.ParamsParser(&reqDto)
-	_ = c.BodyParser(&reqDto)
-
-	fmt.Println(&reqDto)
+	{{if .Query}}_ = c.QueryParser(&reqDto){{end}}
+	{{if .Param}}_ = c.ParamsParser(&reqDto){{end}}
+	{{if .Body}}_ = c.BodyParser(&reqDto){{end}}
 
 	res, err := h.pb.{{.Name}}(ctx, &reqDto)
 

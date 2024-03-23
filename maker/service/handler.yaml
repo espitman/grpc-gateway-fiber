@@ -5,47 +5,83 @@ services:
       path: git.alibaba.ir/taraaz/salvation2/monorepo/pkg/protos/protogen/price_service
       method:
         - name: V1CalendarGet
+          route: V1CalendarGet
+          enable: true
           in: V1CalendarGetRequest
           out: V1CalendarGetResponse
           method: Post
-          route: V1CalendarGet
+          query: true
+          param: true
+          body: true
         - name: V1DayCreate
+          route: V1DayCreate
+          enable: true
           in: V1DayCreateRequest
           out: V1DayCreateResponse
           method: Post
-          route: V1DayCreate
+          query: true
+          param: true
+          body: true
         - name: V1DayDisable
-          in: V1DayEnableDisableRequest
-          out: V1DayEnableDisableResponse
-          method: Post
           route: V1DayDisable
-        - name: V1DayEnable
+          enable: true
           in: V1DayEnableDisableRequest
           out: V1DayEnableDisableResponse
           method: Post
+          query: true
+          param: true
+          body: true
+        - name: V1DayEnable
           route: V1DayEnable
+          enable: true
+          in: V1DayEnableDisableRequest
+          out: V1DayEnableDisableResponse
+          method: Post
+          query: true
+          param: true
+          body: true
         - name: V1DayGuarantee
+          route: V1DayGuarantee
+          enable: true
           in: V1DayGuaranteeRequest
           out: V1DayGuaranteeResponse
           method: Post
-          route: V1DayGuarantee
+          query: true
+          param: true
+          body: true
         - name: V1DayUnGuarantee
+          route: V1DayUnGuarantee
+          enable: true
           in: V1DayUnGuaranteeRequest
           out: V1DayUnGuaranteeResponse
           method: Post
-          route: V1DayUnGuarantee
+          query: true
+          param: true
+          body: true
         - name: V1PriceCreate
+          route: V1PriceCreate
+          enable: true
           in: V1PriceCreateRequest
           out: V1PriceGetResponse
           method: Post
-          route: V1PriceCreate
+          query: true
+          param: true
+          body: true
         - name: V1PriceGet
+          route: V1PriceGet
+          enable: true
           in: V1PriceGetRequest
           out: V1PriceGetResponse
           method: Post
-          route: V1PriceGet
+          query: true
+          param: true
+          body: true
         - name: V1PriceUpdate
+          route: V1PriceUpdate
+          enable: true
           in: V1PriceCreateRequest
           out: V1PriceGetResponse
           method: Post
-          route: V1PriceUpdate
+          query: true
+          param: true
+          body: true

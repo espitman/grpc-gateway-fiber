@@ -14,13 +14,14 @@ type Service struct {
 
 type Method struct {
 	Name   string
+	Route  string
+	Enable bool
 	In     string
 	Out    string
 	Method string
-	Route  string
-	// Query bool
-	// Param bool
-	// Body bool
+	Query  bool
+	Param  bool
+	Body   bool
 }
 
 type Handlers struct {

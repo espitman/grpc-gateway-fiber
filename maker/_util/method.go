@@ -13,10 +13,14 @@ func GetMethods(ifs reflect.Type) []_types.Method {
 		if method.IsExported() {
 			methods = append(methods, _types.Method{
 				Name:   method.Name,
+				Route:  method.Name,
+				Enable: true,
 				In:     strings.Replace(method.Type.In(1).String(), "*price_service.", "", 1),
 				Out:    strings.Replace(method.Type.Out(0).String(), "*price_service.", "", 1),
 				Method: "Post",
-				Route:  method.Name,
+				Query:  true,
+				Param:  true,
+				Body:   true,
 			})
 		}
 	}

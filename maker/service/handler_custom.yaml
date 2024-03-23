@@ -5,12 +5,20 @@ services:
     path: git.alibaba.ir/taraaz/salvation2/monorepo/pkg/protos/protogen/price_service
     method:
       - name: V1CalendarGet
+        route: calendar
+        enable: true
         in: V1CalendarGetRequest
         out: V1CalendarGetResponse
         method: Get
-        route: calendar
+        query: true
+        param: false
+        body: false
       - name: V1PriceGet
+        route: price/:accommodationID
+        enable: true
         in: V1PriceGetRequest
         out: V1PriceGetResponse
         method: Get
-        route: price/:accommodationID
+        query: false
+        param: true
+        body: false
