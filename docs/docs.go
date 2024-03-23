@@ -18,7 +18,523 @@ const docTemplate = `{
     },
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
-    "paths": {},
+    "paths": {
+        "/api/v1/price/V1DayDisable": {
+            "post": {
+                "description": "V1DayDisable",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "price_service"
+                ],
+                "summary": "V1DayDisable",
+                "parameters": [
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/price_service.V1DayEnableDisableRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/price_service.V1DayEnableDisableResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/price/V1DayEnable": {
+            "post": {
+                "description": "V1DayEnable",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "price_service"
+                ],
+                "summary": "V1DayEnable",
+                "parameters": [
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/price_service.V1DayEnableDisableRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/price_service.V1DayEnableDisableResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/price/V1DayGuarantee": {
+            "post": {
+                "description": "V1DayGuarantee",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "price_service"
+                ],
+                "summary": "V1DayGuarantee",
+                "parameters": [
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/price_service.V1DayGuaranteeRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/price_service.V1DayGuaranteeResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/price/V1DayUnGuarantee": {
+            "post": {
+                "description": "V1DayUnGuarantee",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "price_service"
+                ],
+                "summary": "V1DayUnGuarantee",
+                "parameters": [
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/price_service.V1DayUnGuaranteeRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/price_service.V1DayUnGuaranteeResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/price/V1PriceCreate": {
+            "post": {
+                "description": "V1PriceCreate",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "price_service"
+                ],
+                "summary": "V1PriceCreate",
+                "parameters": [
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/price_service.V1PriceCreateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/price_service.V1PriceGetResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/price/V1PriceUpdate": {
+            "post": {
+                "description": "V1PriceUpdate",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "price_service"
+                ],
+                "summary": "V1PriceUpdate",
+                "parameters": [
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/price_service.V1PriceCreateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/price_service.V1PriceGetResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/price/calendar": {
+            "get": {
+                "description": "V1CalendarGet",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "price_service"
+                ],
+                "summary": "V1CalendarGet",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "startDate",
+                        "name": "startDate",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "endDate",
+                        "name": "endDate",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "limit",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "offset",
+                        "name": "offset",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/price_service.V1CalendarGetResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/price/price/{accommodationID}": {
+            "get": {
+                "description": "V1PriceGet",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "price_service"
+                ],
+                "summary": "V1PriceGet",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "accommodationID",
+                        "name": "accommodationID",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/price_service.V1PriceGetResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "price_service.CalendarDay": {
+            "type": "object",
+            "required": [
+                "date",
+                "jalali",
+                "type"
+            ],
+            "properties": {
+                "date": {
+                    "description": "@gotags: validate:\"required,IsDate\"",
+                    "type": "string"
+                },
+                "isCustomHoliday": {
+                    "type": "boolean"
+                },
+                "isPeak": {
+                    "type": "boolean"
+                },
+                "jalali": {
+                    "description": "@gotags: validate:\"required\"",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "@gotags: validate:\"required,oneof=base weekend holiday\"",
+                    "type": "string",
+                    "enum": [
+                        "base",
+                        "weekend",
+                        "holiday"
+                    ]
+                }
+            }
+        },
+        "price_service.Day": {
+            "type": "object",
+            "required": [
+                "date",
+                "price"
+            ],
+            "properties": {
+                "date": {
+                    "description": "@gotags: validate:\"required,IsDate\"",
+                    "type": "string"
+                },
+                "discount": {
+                    "description": "@gotags: validate:\"max=100\"",
+                    "type": "integer",
+                    "maximum": 100
+                },
+                "jabamaDiscount": {
+                    "description": "@gotags: validate:\"max=100\"",
+                    "type": "integer",
+                    "maximum": 100
+                },
+                "price": {
+                    "description": "@gotags: validate:\"required\"",
+                    "type": "integer"
+                }
+            }
+        },
+        "price_service.GuaranteeDay": {
+            "type": "object",
+            "required": [
+                "accommodationID",
+                "days"
+            ],
+            "properties": {
+                "accommodationID": {
+                    "description": "@gotags: validate:\"required,mongodb\"",
+                    "type": "string"
+                },
+                "days": {
+                    "description": "@gotags: validate:\"required,dive\"` + "`" + `",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/price_service.Day"
+                    }
+                }
+            }
+        },
+        "price_service.UnGuarantee": {
+            "type": "object",
+            "required": [
+                "accommodationID",
+                "dates"
+            ],
+            "properties": {
+                "accommodationID": {
+                    "description": "@gotags: validate:\"required,mongodb\"",
+                    "type": "string"
+                },
+                "dates": {
+                    "description": "@gotags: validate:\"required,dive,IsDate\"` + "`" + `",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "price_service.V1CalendarGetResponse": {
+            "type": "object",
+            "properties": {
+                "days": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/price_service.CalendarDay"
+                    }
+                }
+            }
+        },
+        "price_service.V1DayEnableDisableRequest": {
+            "type": "object",
+            "required": [
+                "accommodationID",
+                "dates"
+            ],
+            "properties": {
+                "accommodationID": {
+                    "description": "@gotags: validate:\"required,mongodb\"",
+                    "type": "string"
+                },
+                "dates": {
+                    "description": "@gotags: validate:\"required,dive,IsDate\"` + "`" + `",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "price_service.V1DayEnableDisableResponse": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                }
+            }
+        },
+        "price_service.V1DayGuaranteeRequest": {
+            "type": "object",
+            "required": [
+                "guarantee"
+            ],
+            "properties": {
+                "guarantee": {
+                    "description": "@gotags: validate:\"required,dive\"` + "`" + `",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/price_service.GuaranteeDay"
+                    }
+                }
+            }
+        },
+        "price_service.V1DayGuaranteeResponse": {
+            "type": "object",
+            "properties": {
+                "days": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/price_service.Day"
+                    }
+                }
+            }
+        },
+        "price_service.V1DayUnGuaranteeRequest": {
+            "type": "object",
+            "required": [
+                "unGuarantee"
+            ],
+            "properties": {
+                "unGuarantee": {
+                    "description": "@gotags: validate:\"required,dive\"` + "`" + `",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/price_service.UnGuarantee"
+                    }
+                }
+            }
+        },
+        "price_service.V1DayUnGuaranteeResponse": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                }
+            }
+        },
+        "price_service.V1PriceCreateRequest": {
+            "type": "object",
+            "required": [
+                "accommodationID",
+                "base",
+                "holiday",
+                "weekend"
+            ],
+            "properties": {
+                "accommodationID": {
+                    "description": "@gotags: validate:\"required,mongodb\"",
+                    "type": "string"
+                },
+                "base": {
+                    "description": "@gotags: validate:\"required\"` + "`" + `",
+                    "type": "integer"
+                },
+                "extraPeopleBase": {
+                    "description": "@gotags:",
+                    "type": "integer"
+                },
+                "extraPeopleHoliday": {
+                    "description": "@gotags:",
+                    "type": "integer"
+                },
+                "extraPeopleWeekend": {
+                    "description": "@gotags:",
+                    "type": "integer"
+                },
+                "holiday": {
+                    "description": "@gotags: validate:\"required\"` + "`" + `",
+                    "type": "integer"
+                },
+                "weekend": {
+                    "description": "@gotags: validate:\"required\"` + "`" + `",
+                    "type": "integer"
+                }
+            }
+        },
+        "price_service.V1PriceGetResponse": {
+            "type": "object",
+            "properties": {
+                "accommodationID": {
+                    "type": "string"
+                },
+                "base": {
+                    "type": "integer"
+                },
+                "extraPeopleBase": {
+                    "type": "integer"
+                },
+                "extraPeopleHoliday": {
+                    "type": "integer"
+                },
+                "extraPeopleWeekend": {
+                    "type": "integer"
+                },
+                "holiday": {
+                    "type": "integer"
+                },
+                "weekend": {
+                    "type": "integer"
+                }
+            }
+        }
+    },
     "securityDefinitions": {
         "BearerAuth": {
             "type": "apiKey",

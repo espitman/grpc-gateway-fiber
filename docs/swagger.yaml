@@ -1,4 +1,181 @@
 basePath: /
+definitions:
+  price_service.CalendarDay:
+    properties:
+      date:
+        description: '@gotags: validate:"required,IsDate"'
+        type: string
+      isCustomHoliday:
+        type: boolean
+      isPeak:
+        type: boolean
+      jalali:
+        description: '@gotags: validate:"required"'
+        type: string
+      type:
+        description: '@gotags: validate:"required,oneof=base weekend holiday"'
+        enum:
+        - base
+        - weekend
+        - holiday
+        type: string
+    required:
+    - date
+    - jalali
+    - type
+    type: object
+  price_service.Day:
+    properties:
+      date:
+        description: '@gotags: validate:"required,IsDate"'
+        type: string
+      discount:
+        description: '@gotags: validate:"max=100"'
+        maximum: 100
+        type: integer
+      jabamaDiscount:
+        description: '@gotags: validate:"max=100"'
+        maximum: 100
+        type: integer
+      price:
+        description: '@gotags: validate:"required"'
+        type: integer
+    required:
+    - date
+    - price
+    type: object
+  price_service.GuaranteeDay:
+    properties:
+      accommodationID:
+        description: '@gotags: validate:"required,mongodb"'
+        type: string
+      days:
+        description: '@gotags: validate:"required,dive"`'
+        items:
+          $ref: '#/definitions/price_service.Day'
+        type: array
+    required:
+    - accommodationID
+    - days
+    type: object
+  price_service.UnGuarantee:
+    properties:
+      accommodationID:
+        description: '@gotags: validate:"required,mongodb"'
+        type: string
+      dates:
+        description: '@gotags: validate:"required,dive,IsDate"`'
+        items:
+          type: string
+        type: array
+    required:
+    - accommodationID
+    - dates
+    type: object
+  price_service.V1CalendarGetResponse:
+    properties:
+      days:
+        items:
+          $ref: '#/definitions/price_service.CalendarDay'
+        type: array
+    type: object
+  price_service.V1DayEnableDisableRequest:
+    properties:
+      accommodationID:
+        description: '@gotags: validate:"required,mongodb"'
+        type: string
+      dates:
+        description: '@gotags: validate:"required,dive,IsDate"`'
+        items:
+          type: string
+        type: array
+    required:
+    - accommodationID
+    - dates
+    type: object
+  price_service.V1DayEnableDisableResponse:
+    properties:
+      count:
+        type: integer
+    type: object
+  price_service.V1DayGuaranteeRequest:
+    properties:
+      guarantee:
+        description: '@gotags: validate:"required,dive"`'
+        items:
+          $ref: '#/definitions/price_service.GuaranteeDay'
+        type: array
+    required:
+    - guarantee
+    type: object
+  price_service.V1DayGuaranteeResponse:
+    properties:
+      days:
+        items:
+          $ref: '#/definitions/price_service.Day'
+        type: array
+    type: object
+  price_service.V1DayUnGuaranteeRequest:
+    properties:
+      unGuarantee:
+        description: '@gotags: validate:"required,dive"`'
+        items:
+          $ref: '#/definitions/price_service.UnGuarantee'
+        type: array
+    required:
+    - unGuarantee
+    type: object
+  price_service.V1DayUnGuaranteeResponse:
+    properties:
+      count:
+        type: integer
+    type: object
+  price_service.V1PriceCreateRequest:
+    properties:
+      accommodationID:
+        description: '@gotags: validate:"required,mongodb"'
+        type: string
+      base:
+        description: '@gotags: validate:"required"`'
+        type: integer
+      extraPeopleBase:
+        description: '@gotags:'
+        type: integer
+      extraPeopleHoliday:
+        description: '@gotags:'
+        type: integer
+      extraPeopleWeekend:
+        description: '@gotags:'
+        type: integer
+      holiday:
+        description: '@gotags: validate:"required"`'
+        type: integer
+      weekend:
+        description: '@gotags: validate:"required"`'
+        type: integer
+    required:
+    - accommodationID
+    - base
+    - holiday
+    - weekend
+    type: object
+  price_service.V1PriceGetResponse:
+    properties:
+      accommodationID:
+        type: string
+      base:
+        type: integer
+      extraPeopleBase:
+        type: integer
+      extraPeopleHoliday:
+        type: integer
+      extraPeopleWeekend:
+        type: integer
+      holiday:
+        type: integer
+      weekend:
+        type: integer
+    type: object
 info:
   contact:
     email: s.heidar@jabama.com
@@ -6,7 +183,175 @@ info:
   description: This is gRPC Gateway
   title: gRPC Gateway
   version: "1.0"
-paths: {}
+paths:
+  /api/v1/price/V1DayDisable:
+    post:
+      description: V1DayDisable
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/price_service.V1DayEnableDisableRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/price_service.V1DayEnableDisableResponse'
+      summary: V1DayDisable
+      tags:
+      - price_service
+  /api/v1/price/V1DayEnable:
+    post:
+      description: V1DayEnable
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/price_service.V1DayEnableDisableRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/price_service.V1DayEnableDisableResponse'
+      summary: V1DayEnable
+      tags:
+      - price_service
+  /api/v1/price/V1DayGuarantee:
+    post:
+      description: V1DayGuarantee
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/price_service.V1DayGuaranteeRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/price_service.V1DayGuaranteeResponse'
+      summary: V1DayGuarantee
+      tags:
+      - price_service
+  /api/v1/price/V1DayUnGuarantee:
+    post:
+      description: V1DayUnGuarantee
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/price_service.V1DayUnGuaranteeRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/price_service.V1DayUnGuaranteeResponse'
+      summary: V1DayUnGuarantee
+      tags:
+      - price_service
+  /api/v1/price/V1PriceCreate:
+    post:
+      description: V1PriceCreate
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/price_service.V1PriceCreateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/price_service.V1PriceGetResponse'
+      summary: V1PriceCreate
+      tags:
+      - price_service
+  /api/v1/price/V1PriceUpdate:
+    post:
+      description: V1PriceUpdate
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/price_service.V1PriceCreateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/price_service.V1PriceGetResponse'
+      summary: V1PriceUpdate
+      tags:
+      - price_service
+  /api/v1/price/calendar:
+    get:
+      description: V1CalendarGet
+      parameters:
+      - description: startDate
+        in: query
+        name: startDate
+        type: string
+      - description: endDate
+        in: query
+        name: endDate
+        type: string
+      - description: limit
+        in: query
+        name: limit
+        type: integer
+      - description: offset
+        in: query
+        name: offset
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/price_service.V1CalendarGetResponse'
+      summary: V1CalendarGet
+      tags:
+      - price_service
+  /api/v1/price/price/{accommodationID}:
+    get:
+      description: V1PriceGet
+      parameters:
+      - description: accommodationID
+        in: path
+        name: accommodationID
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/price_service.V1PriceGetResponse'
+      summary: V1PriceGet
+      tags:
+      - price_service
 securityDefinitions:
   BearerAuth:
     in: header

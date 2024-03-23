@@ -6,6 +6,7 @@ services:
     method:
       - name: V1CalendarGet
         route: calendar
+        swaggerRoute: calendar
         enable: true
         in: V1CalendarGetRequest
         out: V1CalendarGetResponse
@@ -13,8 +14,26 @@ services:
         query: true
         param: false
         body: false
+        params:
+          - name: startDate
+            type: string
+            kind: query
+            required: false
+          - name: endDate
+            type: string
+            kind: query
+            required: false
+          - name: limit
+            type: int
+            kind: query
+            required: false
+          - name: offset
+            type: int
+            kind: query
+            required: false
       - name: V1PriceGet
         route: price/:accommodationID
+        swaggerRoute: price/{accommodationID}
         enable: true
         in: V1PriceGetRequest
         out: V1PriceGetResponse
@@ -22,5 +41,10 @@ services:
         query: false
         param: true
         body: false
+        params:
+          - name: accommodationID
+            type: string
+            kind: path
+            required: false
       - name: V1DayCreate
         enable: false

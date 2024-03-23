@@ -13,15 +13,24 @@ type Service struct {
 }
 
 type Method struct {
-	Name   string
-	Route  string
-	Enable bool
-	In     string
-	Out    string
-	Method string
-	Query  bool
-	Param  bool
-	Body   bool
+	Name         string   `yaml:"name"`
+	Route        string   `yaml:"route"`
+	SwaggerRoute string   `yaml:"swaggerRoute"`
+	Enable       bool     `yaml:"enable"`
+	In           string   `yaml:"in"`
+	Out          string   `yaml:"out"`
+	Method       string   `yaml:"method"`
+	Query        bool     `yaml:"query"`
+	Param        bool     `yaml:"param"`
+	Body         bool     `yaml:"body"`
+	Params       []Params `yaml:"params"`
+}
+
+type Params struct {
+	Name     string `yaml:"name"`
+	Type     string `yaml:"type"`
+	Kind     string `yaml:"kind"`
+	Required bool   `yaml:"required"`
 }
 
 type Handlers struct {

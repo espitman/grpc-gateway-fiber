@@ -20,6 +20,19 @@ func new{{.HandlerNameUpper}}(pb {{.PB}}.{{.ClientNameUpper}}) *{{.HandlerName}}
 
 {{ range .Methods }}
 {{if .Enable}}
+// {{.Name}}
+// @Summary {{.Name}}
+// @Description {{.Name}}
+// @Tags {{$.Name}}_service
+// @Produce json
+{{- if .Body }}
+// @Param body body {{$.PB}}.{{.In}} true "body"
+{{- end }}
+{{- range .Params }}{{- if .Name}}
+// @Param {{.Name}} {{.Kind}} {{.Type}} {{.Required}} "{{.Name}}"
+{{- end }}{{- end }}
+// @Success 200 {object} {{$.PB}}.{{.Out}}
+// @Router /api/v1/{{$.Name}}/{{.SwaggerRoute}} [{{.Method}}]
 func (h *{{$.HandlerName}}) {{.Name}}(c *fiber.Ctx) error {
 	header := metadata.New(map[string]string{"authorization": "saeed"})
 	ctx := metadata.NewOutgoingContext(c.Context(), header)

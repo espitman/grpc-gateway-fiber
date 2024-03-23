@@ -11,6 +11,9 @@ app:
 	cd _files gofmt -w *.go
 	cd _files && mv *.go ../..
 
+.PHONY: swagger
+swagger:
+	cd .. && swag init -g ./main.go -o ./docs --parseDependency
 
 .PHONY: ask
 ask:
@@ -18,5 +21,5 @@ ask:
 	echo "Create App started!"
 
 .PHONY: generate
-generate: service ask app
+generate: service ask app swagger
 
