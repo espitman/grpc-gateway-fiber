@@ -22,3 +22,5 @@ services:
         query: false
         param: true
         body: false
+      - name: V1DayCreate
+        enable: false

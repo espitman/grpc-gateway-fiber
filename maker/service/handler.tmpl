@@ -20,18 +20,15 @@ func new{{.HandlerNameUpper}}(pb {{.PB}}.{{.ClientNameUpper}}) *{{.HandlerName}}
 }
 
 {{ range .Methods }}
+{{if .Enable}}
 func (h *{{$.HandlerName}}) {{.Name}}(c *fiber.Ctx) error {
-
 	header := metadata.New(map[string]string{"authorization": "saeed"})
 	ctx := metadata.NewOutgoingContext(c.Context(), header)
-
 	var reqDto {{$.PB}}.{{.In}}
 	{{if .Query}}_ = c.QueryParser(&reqDto){{end}}
 	{{if .Param}}_ = c.ParamsParser(&reqDto){{end}}
 	{{if .Body}}_ = c.BodyParser(&reqDto){{end}}
-
 	res, err := h.pb.{{.Name}}(ctx, &reqDto)
-
 	if err != nil {
 		st, _ := status.FromError(err)
 		log.Println("err:", st.Code(), st.Message(), st.Details())
@@ -39,6 +36,7 @@ func (h *{{$.HandlerName}}) {{.Name}}(c *fiber.Ctx) error {
 	}
 	return c.JSON(res)
 }
+{{ end }}
 {{ end }}
 
 
