@@ -8,7 +8,11 @@ import "github.com/gofiber/fiber/v2"
 func (r *router) {{.RouterName}}(v fiber.Router) {
     {{- range .Methods }}
     {{- if .Enable }}
-	v.{{.Method}}("/{{.Route}}", r.{{$.HandlerName}}.{{.Name}})
+	v.{{.Method}}(
+	    "/{{.Route}}",
+	    AuthMiddleware,
+	    r.{{$.HandlerName}}.{{.Name}},
+	)
 	{{- end }}
 	{{- end }}
 }
