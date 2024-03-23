@@ -20,6 +20,17 @@ ask:
 	@read -p "Customize handler_custom.yaml and press enter: "; \
 	echo "Create App started!"
 
+.PHONY: clean
+clean:
+	cd generator && rm main.go
+	cd service && rm handler.yaml
+	cd .. && rm client_*.go
+	cd .. && rm handler_*.go
+	cd .. && rm router_*.go
+	cd .. && rm main.go
+	cd .. && rm router.go
+
+
 .PHONY: generate
 generate: service ask app swagger
 
