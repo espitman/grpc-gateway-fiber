@@ -1,0 +1,9 @@
+package main
+
+import "github.com/gofiber/fiber/v2"
+
+func (r *router) {{.RouterName}}(v fiber.Router) {
+    {{ range .Methods }}
+	v.{{.Method}}("/{{.Route}}", r.{{$.HandlerName}}.{{.Name}})
+	{{ end }}
+}

@@ -1,0 +1,21 @@
+package main
+
+import (
+	"github.com/gofiber/fiber/v2"
+	"log"
+)
+
+func main() {
+	app := fiber.New()
+    {{ range .Handlers }}
+	{{.ClientName}} := new{{.ClientNameUpper}}()
+	{{.HandlerName}} := new{{.HandlerNameUpper}}({{.ClientName}})
+    {{end}}
+	router := newRouter(
+	    {{ range .Handlers }}
+		{{.HandlerName}},
+		{{end}}
+	)
+	router.serve(app)
+	log.Fatal(app.Listen(":8083"))
+}

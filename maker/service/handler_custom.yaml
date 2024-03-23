@@ -1,0 +1,16 @@
+services:
+  - name: price
+    nameUpper: Price
+    port: 8081
+    path: git.alibaba.ir/taraaz/salvation2/monorepo/pkg/protos/protogen/price_service
+    method:
+      - name: V1CalendarGet
+        in: V1CalendarGetRequest
+        out: V1CalendarGetResponse
+        method: Get
+        route: calendar
+      - name: V1PriceGet
+        in: V1PriceGetRequest
+        out: V1PriceGetResponse
+        method: Get
+        route: price/:accommodationID

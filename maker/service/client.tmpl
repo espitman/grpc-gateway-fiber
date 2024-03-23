@@ -1,0 +1,15 @@
+package main
+
+import (
+	{{.PB}} "{{.PBPath}}"
+	"google.golang.org/grpc"
+	"log"
+)
+
+func new{{.ClientNameUpper}}() {{.PB}}.{{.ClientNameUpper}} {
+	cc, err := grpc.Dial("localhost:8080", grpc.WithInsecure())
+	if err != nil {
+		log.Println(err)
+	}
+	return {{.PB}}.New{{.ClientNameUpper}}(cc)
+}

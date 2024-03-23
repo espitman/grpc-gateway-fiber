@@ -1,0 +1,51 @@
+services:
+    - name: price
+      nameUpper: Price
+      port: 8081
+      path: git.alibaba.ir/taraaz/salvation2/monorepo/pkg/protos/protogen/price_service
+      method:
+        - name: V1CalendarGet
+          in: V1CalendarGetRequest
+          out: V1CalendarGetResponse
+          method: Post
+          route: V1CalendarGet
+        - name: V1DayCreate
+          in: V1DayCreateRequest
+          out: V1DayCreateResponse
+          method: Post
+          route: V1DayCreate
+        - name: V1DayDisable
+          in: V1DayEnableDisableRequest
+          out: V1DayEnableDisableResponse
+          method: Post
+          route: V1DayDisable
+        - name: V1DayEnable
+          in: V1DayEnableDisableRequest
+          out: V1DayEnableDisableResponse
+          method: Post
+          route: V1DayEnable
+        - name: V1DayGuarantee
+          in: V1DayGuaranteeRequest
+          out: V1DayGuaranteeResponse
+          method: Post
+          route: V1DayGuarantee
+        - name: V1DayUnGuarantee
+          in: V1DayUnGuaranteeRequest
+          out: V1DayUnGuaranteeResponse
+          method: Post
+          route: V1DayUnGuarantee
+        - name: V1PriceCreate
+          in: V1PriceCreateRequest
+          out: V1PriceGetResponse
+          method: Post
+          route: V1PriceCreate
+        - name: V1PriceGet
+          in: V1PriceGetRequest
+          out: V1PriceGetResponse
+          method: Post
+          route: V1PriceGet
+        - name: V1PriceUpdate
+          in: V1PriceCreateRequest
+          out: V1PriceGetResponse
+          method: Post
+          route: V1PriceUpdate
