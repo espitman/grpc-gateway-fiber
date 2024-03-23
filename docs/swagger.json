@@ -1,0 +1,21 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is gRPC Gateway",
+        "title": "gRPC Gateway",
+        "contact": {
+            "name": "API Support",
+            "email": "s.heidar@jabama.com"
+        },
+        "version": "1.0"
+    },
+    "basePath": "/",
+    "paths": {},
+    "securityDefinitions": {
+        "BearerAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}

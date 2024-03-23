@@ -1,0 +1,15 @@
+basePath: /
+info:
+  contact:
+    email: s.heidar@jabama.com
+    name: API Support
+  description: This is gRPC Gateway
+  title: gRPC Gateway
+  version: "1.0"
+paths: {}
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

@@ -5,27 +5,26 @@ import (
 )
 
 type router struct {
-    
 	priceServiceHandler *priceServiceHandler
-	
 }
 
 func newRouter(
-    
-    priceServiceHandler *priceServiceHandler,
-    
+
+	priceServiceHandler *priceServiceHandler,
+
 ) *router {
 	return &router{
-        
+
 		priceServiceHandler: priceServiceHandler,
-        
 	}
 }
 
 func (r *router) serve(app *fiber.App) {
 	api := app.Group("/api")
 	v1 := api.Group("/v1")
-    
+
+	r.swaggerRouter(app)
+
 	r.priceServiceRouter(v1.Group("/price"))
-	
+
 }
