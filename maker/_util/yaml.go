@@ -10,11 +10,13 @@ import (
 func YamlReader(path string, data any) {
 	yamlFile, err := ioutil.ReadFile(path)
 	if err != nil {
-		log.Fatalf("Failed to read YAML file: %v", err)
+		log.Printf("Failed to read YAML file: %v", err)
+		return
 	}
 	err = yaml.Unmarshal(yamlFile, data)
 	if err != nil {
-		log.Fatalf("Failed to unmarshal YAML data: %v", err)
+		log.Printf("Failed to unmarshal YAML data: %v", err)
+		return
 	}
 }
 

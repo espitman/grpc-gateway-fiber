@@ -1,3 +1,4 @@
+
 # gRPC-gateway REST API with Fiber
 
 This project provides an automated gRPC-gateway REST API based on Fiber framework in Go.
@@ -11,47 +12,56 @@ This project provides an automated gRPC-gateway REST API based on Fiber framewor
 
 1. Clone the project repository:
 
-```bash
-
-git clone https://github.com/espitman/grpc-gateway-fiber.git
-
-```
+```bash  
+  
+git clone https://github.com/espitman/grpc-gateway-fiber.git  
+  
+```  
 
 2. Rename the project to your desired name:
 
-```bash
-
-make rename
-
-```
+```bash  
+  
+make rename  
+  
+```  
 
 3. Add the gRPC service to your project:
 
-```bash
-
-make add-grpc-service
-
-```
+```bash  
+  
+make add-grpc-service  
+  
+```  
 
 4. Generate the necessary code:
 
-```bash
+```bash  
+  
+make generate  
+  
+```  
 
-make generate
 
-```
+5. Customize the handler YAML file:  
+   Update the `handler_custom.yaml` file according to your specific customization requirements.  
+   Copy the `maker/service/handler.yaml` file to `maker/service/handler_custom.yaml`. You can modify the `handler_custom.yaml` file to customize the settings for each method:
 
-5. Customize the handler YAML file:
+    - To exclude certain methods from customization, you can remove them from the custom file.
+    - If you wish to prevent a method from being exposed, change the `enable` field to `false`.
+    - If you don't need to apply authorization to a method, set `authorize` to `false`.
 
-Edit the `handler.yaml` file to define your REST endpoints and their corresponding gRPC services.
+   The format for customization is as follows: ```route | swaggerRoute | method```.
+
+By following these steps, you can create a customized `handler_custom.yaml` file based on the original `handler.yaml` file, allowing you to modify the behavior and settings for each method as desired.
 
 6. Run the application:
 
-```bash
-
-make run
-
-```
+```bash  
+  
+make run  
+  
+```  
 
 ## Usage
 
@@ -59,11 +69,9 @@ Once the application is running, you can access the REST API endpoints defined i
 
 ## Contributing
 
-Contributions are welcome! If you find any issues or have suggestions for improvements, please feel free to open an
+Contributions are welcome! If you find any issues or have suggestions for improvements, please feel free to open an  
 issue or submit a pull request.
 
 ## License
 
 This project is licensed under the [MIT  License](LICENSE).
-  
-
