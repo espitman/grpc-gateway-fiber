@@ -36,8 +36,8 @@ rename-cleanup:
 generate:
 	cd maker && make generate
 ###################################################################
-.PHONY: create-yaml
-create-yaml:
+.PHONY: add-grpc-service
+add-grpc-service:
 	@read -p "Enter service name: " SERVICE_NAME; \
 	read -p "Enter service port: " SERVICE_PORT; \
 	read -p "Enter service path: " SERVICE_PATH; \
