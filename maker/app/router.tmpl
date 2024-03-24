@@ -30,6 +30,6 @@ func (r *router) serve(app *fiber.App) {
 	v1 := api.Group("/v1")
 	r.swaggerRouter(app)
     {{- range .Handlers }}
-	r.{{.RouterName}}(v1.Group("/{{.Name}}"))
+	r.{{.RouterName}}(v1.Group("/{{.Name}}-service"))
 	{{- end}}
 }

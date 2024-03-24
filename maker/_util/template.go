@@ -13,6 +13,7 @@ func Render(tmplFile string, outputFile string, data any) {
 	funcMap := template.FuncMap{
 		"Time":  Time,
 		"Upper": CapitalizeFirstChar,
+		"Kebab": KebabCase,
 	}
 
 	var buffer bytes.Buffer

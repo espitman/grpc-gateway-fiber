@@ -9,7 +9,7 @@ func (r *router) {{.RouterName}}(v fiber.Router) {
     {{- range .Methods }}
     {{- if .Enable }}
 	v.{{.Method}}(
-	    "/{{.Route}}",
+	    "/{{.Route|Kebab}}",
 	    AuthMiddleware,
 	    r.{{$.HandlerName}}.{{.Name}},
 	)

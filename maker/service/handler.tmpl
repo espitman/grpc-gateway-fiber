@@ -36,7 +36,7 @@ func new{{.HandlerName|Upper}}(pb {{.PB}}.{{.ClientName|Upper}}) *{{.HandlerName
 // @Param {{.Name}} {{.Kind}} {{.Type}} {{.Required}} "{{.Name}}"
 {{- end }}{{- end }}
 // @Success 200 {object} {{$.Name}}Service{{.Name}}ResponseDto
-// @Router /api/v1/{{$.Name}}/{{.SwaggerRoute}} [{{.Method}}]
+// @Router /api/v1/{{$.Name}}-service/{{.SwaggerRoute|Kebab}} [{{.Method}}]
 func (h *{{$.HandlerName}}) {{.Name}}(c *fiber.Ctx) error {
 	var fctx = fiberCtx{c}
 	reqHeaders := fctx.GetReqHeaders()
