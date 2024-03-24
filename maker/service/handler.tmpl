@@ -35,7 +35,7 @@ func new{{.HandlerNameUpper}}(pb {{.PB}}.{{.ClientNameUpper}}) *{{.HandlerName}}
 {{- range .Params }}{{- if .Name}}
 // @Param {{.Name}} {{.Kind}} {{.Type}} {{.Required}} "{{.Name}}"
 {{- end }}{{- end }}
-// @Success 200 {object} {{$.PB}}.{{.Out}}
+// @Success 200 {object} {{$.Name}}Service{{.Name}}ResponseDto
 // @Router /api/v1/{{$.Name}}/{{.SwaggerRoute}} [{{.Method}}]
 func (h *{{$.HandlerName}}) {{.Name}}(c *fiber.Ctx) error {
 	var fctx = fiberCtx{c}

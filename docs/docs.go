@@ -44,7 +44,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/price_service.V1DayEnableDisableResponse"
+                            "$ref": "#/definitions/main.priceServiceV1DayDisableResponseDto"
                         }
                     }
                 }
@@ -75,7 +75,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/price_service.V1DayEnableDisableResponse"
+                            "$ref": "#/definitions/main.priceServiceV1DayEnableResponseDto"
                         }
                     }
                 }
@@ -106,7 +106,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/price_service.V1DayGuaranteeResponse"
+                            "$ref": "#/definitions/main.priceServiceV1DayGuaranteeResponseDto"
                         }
                     }
                 }
@@ -137,7 +137,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/price_service.V1DayUnGuaranteeResponse"
+                            "$ref": "#/definitions/main.priceServiceV1DayUnGuaranteeResponseDto"
                         }
                     }
                 }
@@ -168,7 +168,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/price_service.V1PriceGetResponse"
+                            "$ref": "#/definitions/main.priceServiceV1PriceCreateResponseDto"
                         }
                     }
                 }
@@ -199,7 +199,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/price_service.V1PriceGetResponse"
+                            "$ref": "#/definitions/main.priceServiceV1PriceUpdateResponseDto"
                         }
                     }
                 }
@@ -245,7 +245,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/price_service.V1CalendarGetResponse"
+                            "$ref": "#/definitions/main.priceServiceV1CalendarGetResponseDto"
                         }
                     }
                 }
@@ -273,7 +273,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/price_service.V1PriceGetResponse"
+                            "$ref": "#/definitions/main.priceServiceV1PriceGetResponseDto"
                         }
                     }
                 }
@@ -281,6 +281,118 @@ const docTemplate = `{
         }
     },
     "definitions": {
+        "main.priceServiceV1CalendarGetResponseDto": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "payload": {
+                    "$ref": "#/definitions/price_service.V1CalendarGetResponse"
+                }
+            }
+        },
+        "main.priceServiceV1DayDisableResponseDto": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "payload": {
+                    "$ref": "#/definitions/price_service.V1DayEnableDisableResponse"
+                }
+            }
+        },
+        "main.priceServiceV1DayEnableResponseDto": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "payload": {
+                    "$ref": "#/definitions/price_service.V1DayEnableDisableResponse"
+                }
+            }
+        },
+        "main.priceServiceV1DayGuaranteeResponseDto": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "payload": {
+                    "$ref": "#/definitions/price_service.V1DayGuaranteeResponse"
+                }
+            }
+        },
+        "main.priceServiceV1DayUnGuaranteeResponseDto": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "payload": {
+                    "$ref": "#/definitions/price_service.V1DayUnGuaranteeResponse"
+                }
+            }
+        },
+        "main.priceServiceV1PriceCreateResponseDto": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "payload": {
+                    "$ref": "#/definitions/price_service.V1PriceGetResponse"
+                }
+            }
+        },
+        "main.priceServiceV1PriceGetResponseDto": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "payload": {
+                    "$ref": "#/definitions/price_service.V1PriceGetResponse"
+                }
+            }
+        },
+        "main.priceServiceV1PriceUpdateResponseDto": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "payload": {
+                    "$ref": "#/definitions/price_service.V1PriceGetResponse"
+                }
+            }
+        },
         "price_service.CalendarDay": {
             "type": "object",
             "required": [

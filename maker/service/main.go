@@ -18,6 +18,12 @@ func createRouter(h types.Handler) {
 	util.Render(tmplFile, outputFile, h)
 }
 
+func createDto(h types.Handler) {
+	tmplFile := "dto.tmpl"
+	outputFile := "../_files/dto_" + strings.ToLower(h.Name) + "_service.go"
+	util.Render(tmplFile, outputFile, h)
+}
+
 func createClient(h types.Handler) {
 	tmplFile := "client.tmpl"
 	outputFile := "../_files/client_" + strings.ToLower(h.Name) + "_service.go"
@@ -73,6 +79,7 @@ func main() {
 
 		createHandler(h)
 		createRouter(h)
+		createDto(h)
 		createClient(h)
 	}
 

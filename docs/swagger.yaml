@@ -1,5 +1,77 @@
 basePath: /
 definitions:
+  main.priceServiceV1CalendarGetResponseDto:
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+      payload:
+        $ref: '#/definitions/price_service.V1CalendarGetResponse'
+    type: object
+  main.priceServiceV1DayDisableResponseDto:
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+      payload:
+        $ref: '#/definitions/price_service.V1DayEnableDisableResponse'
+    type: object
+  main.priceServiceV1DayEnableResponseDto:
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+      payload:
+        $ref: '#/definitions/price_service.V1DayEnableDisableResponse'
+    type: object
+  main.priceServiceV1DayGuaranteeResponseDto:
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+      payload:
+        $ref: '#/definitions/price_service.V1DayGuaranteeResponse'
+    type: object
+  main.priceServiceV1DayUnGuaranteeResponseDto:
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+      payload:
+        $ref: '#/definitions/price_service.V1DayUnGuaranteeResponse'
+    type: object
+  main.priceServiceV1PriceCreateResponseDto:
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+      payload:
+        $ref: '#/definitions/price_service.V1PriceGetResponse'
+    type: object
+  main.priceServiceV1PriceGetResponseDto:
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+      payload:
+        $ref: '#/definitions/price_service.V1PriceGetResponse'
+    type: object
+  main.priceServiceV1PriceUpdateResponseDto:
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+      payload:
+        $ref: '#/definitions/price_service.V1PriceGetResponse'
+    type: object
   price_service.CalendarDay:
     properties:
       date:
@@ -200,7 +272,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/price_service.V1DayEnableDisableResponse'
+            $ref: '#/definitions/main.priceServiceV1DayDisableResponseDto'
       summary: V1DayDisable
       tags:
       - price_service
@@ -220,7 +292,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/price_service.V1DayEnableDisableResponse'
+            $ref: '#/definitions/main.priceServiceV1DayEnableResponseDto'
       summary: V1DayEnable
       tags:
       - price_service
@@ -240,7 +312,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/price_service.V1DayGuaranteeResponse'
+            $ref: '#/definitions/main.priceServiceV1DayGuaranteeResponseDto'
       summary: V1DayGuarantee
       tags:
       - price_service
@@ -260,7 +332,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/price_service.V1DayUnGuaranteeResponse'
+            $ref: '#/definitions/main.priceServiceV1DayUnGuaranteeResponseDto'
       summary: V1DayUnGuarantee
       tags:
       - price_service
@@ -280,7 +352,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/price_service.V1PriceGetResponse'
+            $ref: '#/definitions/main.priceServiceV1PriceCreateResponseDto'
       summary: V1PriceCreate
       tags:
       - price_service
@@ -300,7 +372,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/price_service.V1PriceGetResponse'
+            $ref: '#/definitions/main.priceServiceV1PriceUpdateResponseDto'
       summary: V1PriceUpdate
       tags:
       - price_service
@@ -330,7 +402,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/price_service.V1CalendarGetResponse'
+            $ref: '#/definitions/main.priceServiceV1CalendarGetResponseDto'
       summary: V1CalendarGet
       tags:
       - price_service
@@ -348,7 +420,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/price_service.V1PriceGetResponse'
+            $ref: '#/definitions/main.priceServiceV1PriceGetResponseDto'
       summary: V1PriceGet
       tags:
       - price_service

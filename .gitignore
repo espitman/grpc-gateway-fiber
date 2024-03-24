@@ -1,6 +1,7 @@
 /client_*.go
 /handler_*.go
 /router_*.go
+/dto_*.go
 /main.go
 /router.go
 
