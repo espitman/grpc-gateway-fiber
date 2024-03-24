@@ -35,3 +35,7 @@ rename-cleanup:
 .PHONY: generate
 generate:
 	cd maker && make generate
+
+.PHONY: run
+run:
+	go run .
