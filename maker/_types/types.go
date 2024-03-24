@@ -16,6 +16,7 @@ type Method struct {
 	Route        string   `yaml:"route"`
 	SwaggerRoute string   `yaml:"swaggerRoute"`
 	Enable       bool     `yaml:"enable"`
+	Authorize    bool     `yaml:"authorize"`
 	In           string   `yaml:"in"`
 	Out          string   `yaml:"out"`
 	Method       string   `yaml:"method"`

@@ -10,7 +10,12 @@ func getCtx(fctx fiberCtx) context.Context {
 	reqHeaders := fctx.GetReqHeaders()
 
 	headers := make(map[string]string)
-	headers["authorization"] = reqHeaders["Authorization"][0]
+	if _, ok := reqHeaders["Authorization"]; ok {
+		headers["authorization"] = reqHeaders["Authorization"][0]
+	} else {
+		headers["authorization"] = "Guest"
+	}
+
 	headers["trace-id"] = uuid.NewString()
 
 	header := metadata.New(headers)

@@ -23,6 +23,7 @@ func GetMethods(ifs reflect.Type) []_types.Method {
 				Route:        method.Name,
 				SwaggerRoute: method.Name,
 				Enable:       true,
+				Authorize:    true,
 				In:           strings.Replace(method.Type.In(1).String(), "*price_service.", "", 1),
 				Out:          strings.Replace(method.Type.Out(0).String(), "*price_service.", "", 1),
 				Method:       "Post",
