@@ -6,7 +6,6 @@ package main
 import (
 	{{.PB}} "{{.PBPath}}"
 	"github.com/gofiber/fiber/v2"
-	"google.golang.org/grpc/metadata"
 )
 
 type {{.HandlerName}} struct {
@@ -38,9 +37,7 @@ func new{{.HandlerName|Upper}}(pb {{.PB}}.{{.ClientName|Upper}}) *{{.HandlerName
 // @Router /api/v1/{{$.Name}}-service/{{.SwaggerRoute|Kebab}} [{{.Method}}]
 func (h *{{$.HandlerName}}) {{.Name}}(c *fiber.Ctx) error {
 	var fctx = fiberCtx{c}
-	reqHeaders := fctx.GetReqHeaders()
-	header := metadata.New(map[string]string{"authorization": reqHeaders["Authorization"][0]})
-	ctx := metadata.NewOutgoingContext(fctx.Context(), header)
+	ctx := getCtx(fctx)
 	var reqDto {{$.PB}}.{{.In}}
 	{{- if .Query }}
 	_ = fctx.QueryParser(&reqDto)
