@@ -25,3 +25,7 @@ rename-cleanup:
 	@echo "Cleaning up backup files"
 	find . -name "*.go-e" -type f -delete
 	rm new_module_name.txt
+
+.PHONY: generate
+generate:
+	cd maker && make generate
