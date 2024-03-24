@@ -7,8 +7,6 @@ import (
 	{{.PB}} "{{.PBPath}}"
 	"github.com/gofiber/fiber/v2"
 	"google.golang.org/grpc/metadata"
-	"google.golang.org/grpc/status"
-	"log"
 )
 
 type {{.HandlerName}} struct {
@@ -29,6 +27,7 @@ func new{{.HandlerName|Upper}}(pb {{.PB}}.{{.ClientName|Upper}}) *{{.HandlerName
 // @Description {{.Name}}
 // @Tags {{$.Name}}_service
 // @Produce json
+// @Security BearerAuth
 {{- if .Body }}
 // @Param body body {{$.PB}}.{{.In}} true "body"
 {{- end }}
@@ -54,8 +53,6 @@ func (h *{{$.HandlerName}}) {{.Name}}(c *fiber.Ctx) error {
 	{{- end }}
 	res, err := h.pb.{{.Name}}(ctx, &reqDto)
 	if err != nil {
-		st, _ := status.FromError(err)
-		log.Println("err:", st.Code(), st.Message(), st.Details())
 		return fctx.BadRequest(err)
 	}
 	return fctx.ResponseOk(res)
