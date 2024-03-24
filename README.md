@@ -13,7 +13,7 @@ This project provides an automated gRPC-gateway REST API based on Fiber framewor
 
 ```bash
 
-git clone https://github.com/your-username/your-project.git
+git clone https://github.com/espitman/grpc-gateway-fiber.git
 
 ```
 
