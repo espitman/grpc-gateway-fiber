@@ -26,15 +26,13 @@ func main() {
 	var handlers []types.Handler
 	for _, service := range data.Service {
 		handlers = append(handlers, types.Handler{
-			Name:             service.Name,
-			PB:               service.Name + "pb",
-			PBPath:           service.Path,
-			HandlerName:      service.Name + "ServiceHandler",
-			HandlerNameUpper: service.NameUpper + "ServiceHandler",
-			ClientName:       service.Name + "ServiceClient",
-			ClientNameUpper:  service.NameUpper + "ServiceClient",
-			Methods:          nil,
-			RouterName:       service.Name + "ServiceRouter",
+			Name:        service.Name,
+			PB:          service.Name + "pb",
+			PBPath:      service.Path,
+			HandlerName: service.Name + "ServiceHandler",
+			ClientName:  service.Name + "ServiceClient",
+			Methods:     nil,
+			RouterName:  service.Name + "ServiceRouter",
 		})
 	}
 	h := types.Handlers{

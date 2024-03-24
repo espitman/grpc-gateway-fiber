@@ -12,10 +12,10 @@ import (
 )
 
 type {{.HandlerName}} struct {
-	pb {{.PB}}.{{.ClientNameUpper}}
+	pb {{.PB}}.{{.ClientName|Upper}}
 }
 
-func new{{.HandlerNameUpper}}(pb {{.PB}}.{{.ClientNameUpper}}) *{{.HandlerName}} {
+func new{{.HandlerName|Upper}}(pb {{.PB}}.{{.ClientName|Upper}}) *{{.HandlerName}} {
 	return &{{.HandlerName}}{
 		pb: pb,
 	}

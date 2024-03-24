@@ -9,10 +9,10 @@ import (
 	"log"
 )
 
-func new{{.ClientNameUpper}}() {{.PB}}.{{.ClientNameUpper}} {
+func new{{.ClientName|Upper}}() {{.PB}}.{{.ClientName|Upper}} {
 	cc, err := grpc.Dial("localhost:8080", grpc.WithInsecure())
 	if err != nil {
 		log.Println(err)
 	}
-	return {{.PB}}.New{{.ClientNameUpper}}(cc)
+	return {{.PB}}.New{{.ClientName|Upper}}(cc)
 }

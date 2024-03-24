@@ -5,11 +5,10 @@ type Services struct {
 }
 
 type Service struct {
-	Name      string   `yaml:"name"`
-	NameUpper string   `yaml:"nameUpper"`
-	Port      int      `yaml:"port"`
-	Path      string   `yaml:"path"`
-	Method    []Method `yaml:"method"`
+	Name   string   `yaml:"name"`
+	Port   int      `yaml:"port"`
+	Path   string   `yaml:"path"`
+	Method []Method `yaml:"method"`
 }
 
 type Method struct {
@@ -38,13 +37,11 @@ type Handlers struct {
 }
 
 type Handler struct {
-	Name             string
-	PB               string
-	PBPath           string
-	HandlerName      string
-	HandlerNameUpper string
-	ClientName       string
-	ClientNameUpper  string
-	Methods          []Method
-	RouterName       string
+	Name        string
+	PB          string
+	PBPath      string
+	HandlerName string
+	ClientName  string
+	Methods     []Method
+	RouterName  string
 }

@@ -56,7 +56,6 @@ func main() {
 	util.YamlReader("handler.yaml", &data)
 
 	for _, service := range data.Service {
-		ServiceNameUpper := util.CapitalizeFirstChar(service.Name)
 		var methods []types.Method
 		for _, method := range service.Method {
 			cm, ok := customHandler[service.Name][method.Name]
@@ -67,14 +66,13 @@ func main() {
 		}
 
 		h := types.Handler{
-			Name:             service.Name,
-			PB:               service.Name + "pb",
-			PBPath:           service.Path,
-			HandlerName:      service.Name + "ServiceHandler",
-			HandlerNameUpper: ServiceNameUpper + "ServiceHandler",
-			ClientNameUpper:  ServiceNameUpper + "ServiceClient",
-			Methods:          methods,
-			RouterName:       service.Name + "ServiceRouter",
+			Name:        service.Name,
+			PB:          service.Name + "pb",
+			PBPath:      service.Path,
+			HandlerName: service.Name + "ServiceHandler",
+			ClientName:  service.Name + "ServiceClient",
+			RouterName:  service.Name + "ServiceRouter",
+			Methods:     methods,
 		}
 
 		createHandler(h)

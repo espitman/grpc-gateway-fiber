@@ -22,8 +22,8 @@ import (
 func main() {
 	app := fiber.New()
     {{- range .Handlers }}
-	{{.ClientName}} := new{{.ClientNameUpper}}()
-	{{.HandlerName}} := new{{.HandlerNameUpper}}({{.ClientName}})
+	{{.ClientName}} := new{{.ClientName|Upper}}()
+	{{.HandlerName}} := new{{.HandlerName|Upper}}({{.ClientName}})
     {{- end }}
 	router := newRouter(
 	    {{- range .Handlers }}

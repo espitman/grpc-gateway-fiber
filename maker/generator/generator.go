@@ -20,10 +20,9 @@ func main() {
 
 	for _, service := range data.Service {
 		services.Services = append(services.Services, _types.Service{
-			Name:      service.Name,
-			NameUpper: service.NameUpper,
-			Port:      service.Port,
-			Path:      service.Path,
+			Name: service.Name,
+			Port: service.Port,
+			Path: service.Path,
 		})
 	}
 

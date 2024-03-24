@@ -1,6 +1,15 @@
 package _util
 
-import "unicode"
+import (
+	"time"
+	"unicode"
+)
+
+func Time() string {
+	currentTime := time.Now()
+	currentTimeString := currentTime.Format("2006-01-02 15:04:05")
+	return currentTimeString
+}
 
 func CapitalizeFirstChar(str string) string {
 	if len(str) == 0 {

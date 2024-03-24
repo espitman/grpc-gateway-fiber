@@ -1,6 +1,5 @@
 services:
   - name: price
-    nameUpper: Price
     port: 8081
     path: git.alibaba.ir/taraaz/salvation2/monorepo/pkg/protos/protogen/price_service
 

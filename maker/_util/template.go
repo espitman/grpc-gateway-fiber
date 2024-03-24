@@ -6,19 +6,13 @@ import (
 	"io/ioutil"
 	"os"
 	"text/template"
-	"time"
 )
-
-func Time() string {
-	currentTime := time.Now()
-	currentTimeString := currentTime.Format("2006-01-02 15:04:05")
-	return currentTimeString
-}
 
 func Render(tmplFile string, outputFile string, data any) {
 
 	funcMap := template.FuncMap{
-		"Time": Time,
+		"Time":  Time,
+		"Upper": CapitalizeFirstChar,
 	}
 
 	var buffer bytes.Buffer
