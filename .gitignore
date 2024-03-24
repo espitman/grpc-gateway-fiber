@@ -8,3 +8,4 @@
 /maker/generator/main.go
 /maker/service/*.yaml
 /docs/
+/config/local.json

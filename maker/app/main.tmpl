@@ -4,6 +4,7 @@
 package main
 
 import (
+    superConf "github.com/espitman/go-super-conf"
     _ "github.com/espitman/grpc-gateway-fiber/docs"
 	"github.com/gofiber/fiber/v2"
 	"log"
@@ -31,5 +32,6 @@ func main() {
 		{{- end }}
 	)
 	router.serve(app)
-	log.Fatal(app.Listen(":8083"))
+	PORT := superConf.Get("app.port")
+    log.Fatal(app.Listen(":" + PORT))
 }
