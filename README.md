@@ -30,7 +30,7 @@ make rename
 
 ```bash  
   
-make add-grpc-service  
+mage add:service  
   
 ```  
 
@@ -38,7 +38,7 @@ make add-grpc-service
 
 ```bash  
   
-make generate  
+mage generate:server  
   
 ```  
 
