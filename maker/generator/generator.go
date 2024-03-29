@@ -6,8 +6,8 @@ import (
 )
 
 func createMain(s _types.Services) {
-	tmplFile := "main.tmpl"
-	outputFile := "main.go"
+	tmplFile := "./maker/generator/main.tmpl"
+	outputFile := "./maker/generator/main.go"
 	util.Render(tmplFile, outputFile, s)
 }
 
@@ -16,7 +16,7 @@ func main() {
 	var data struct {
 		Service []_types.Service `yaml:"services"`
 	}
-	util.YamlReader("../service.yaml", &data)
+	util.YamlReader("./maker/service.yaml", &data)
 
 	for _, service := range data.Service {
 		services.Services = append(services.Services, _types.Service{

@@ -6,14 +6,14 @@ import (
 )
 
 func createRouter(h types.Handlers) {
-	tmplFile := "router.tmpl"
-	outputFile := "../_files/router.go"
+	tmplFile := "./maker/app/router.tmpl"
+	outputFile := "./maker/_files/router.go"
 	util.Render(tmplFile, outputFile, h)
 }
 
 func createMain(h types.Handlers) {
-	tmplFile := "main.tmpl"
-	outputFile := "../_files/main.go"
+	tmplFile := "./maker/app/main.tmpl"
+	outputFile := "./maker/_files/main.go"
 	util.Render(tmplFile, outputFile, h)
 }
 
@@ -21,7 +21,7 @@ func main() {
 	var data struct {
 		Service []types.Service `yaml:"services"`
 	}
-	util.YamlReader("../service.yaml", &data)
+	util.YamlReader("./maker/service.yaml", &data)
 
 	var handlers []types.Handler
 	for _, service := range data.Service {

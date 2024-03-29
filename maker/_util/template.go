@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"path/filepath"
 	"text/template"
 )
 
@@ -17,7 +18,7 @@ func Render(tmplFile string, outputFile string, data any) {
 	}
 
 	var buffer bytes.Buffer
-	tmpl, err := template.New(tmplFile).Funcs(funcMap).ParseFiles(tmplFile)
+	tmpl, err := template.New(filepath.Base(tmplFile)).Funcs(funcMap).ParseFiles(tmplFile)
 	if err != nil {
 		fmt.Println("Error parsing template:", err)
 		os.Exit(1)

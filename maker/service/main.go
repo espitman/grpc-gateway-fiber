@@ -7,26 +7,26 @@ import (
 )
 
 func createHandler(h types.Handler) {
-	tmplFile := "handler.tmpl"
-	outputFile := "../_files/handler_" + strings.ToLower(h.Name) + "_service.go"
+	tmplFile := "./maker/service/handler.tmpl"
+	outputFile := "./maker/_files/handler_" + strings.ToLower(h.Name) + "_service.go"
 	util.Render(tmplFile, outputFile, h)
 }
 
 func createRouter(h types.Handler) {
-	tmplFile := "router.tmpl"
-	outputFile := "../_files/router_" + strings.ToLower(h.Name) + "_service.go"
+	tmplFile := "./maker/service/router.tmpl"
+	outputFile := "./maker/_files/router_" + strings.ToLower(h.Name) + "_service.go"
 	util.Render(tmplFile, outputFile, h)
 }
 
 func createDto(h types.Handler) {
-	tmplFile := "dto.tmpl"
-	outputFile := "../_files/dto_" + strings.ToLower(h.Name) + "_service.go"
+	tmplFile := "./maker/service/dto.tmpl"
+	outputFile := "./maker/_files/dto_" + strings.ToLower(h.Name) + "_service.go"
 	util.Render(tmplFile, outputFile, h)
 }
 
 func createClient(h types.Handler) {
-	tmplFile := "client.tmpl"
-	outputFile := "../_files/client_" + strings.ToLower(h.Name) + "_service.go"
+	tmplFile := "./maker/service/client.tmpl"
+	outputFile := "./maker/_files/client_" + strings.ToLower(h.Name) + "_service.go"
 	util.Render(tmplFile, outputFile, h)
 }
 
@@ -35,7 +35,7 @@ func getCustomHandler() map[string]map[string]types.Method {
 	var data struct {
 		Service []types.Service `yaml:"services"`
 	}
-	util.YamlReader("handler_custom.yaml", &data)
+	util.YamlReader("./maker/service/handler_custom.yaml", &data)
 	for _, service := range data.Service {
 		if custom[service.Name] == nil {
 			custom[service.Name] = make(map[string]types.Method)
@@ -53,7 +53,7 @@ func main() {
 	var data struct {
 		Service []types.Service `yaml:"services"`
 	}
-	util.YamlReader("handler.yaml", &data)
+	util.YamlReader("./maker/service/handler.yaml", &data)
 
 	for _, service := range data.Service {
 		var methods []types.Method

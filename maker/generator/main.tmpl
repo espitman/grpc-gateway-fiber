@@ -24,7 +24,7 @@ func getServiceMethods(service string) []types.Method {
 }
 
 func createHandlerYaml(services types.Services) error {
-	filename := "handler.yaml"
+	filename := "./maker/generator/handler.yaml"
 	data := types.Services{
 		Services: services.Services,
 	}
@@ -37,7 +37,7 @@ func main() {
     var data struct {
         Service []types.Service `yaml:"services"`
     }
-    util.YamlReader("../service.yaml", &data)
+    util.YamlReader("./maker/service.yaml", &data)
 
     for _, service := range data.Service {
         methods := getServiceMethods(service.Name)

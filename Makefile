@@ -5,11 +5,9 @@ OLD_MODULE_NAME := github.com/espitman/grpc-gateway-fiber
 .PHONY: rename
 rename: rename-ask rename-module rename-update-imports rename-update-tmpl rename-cleanup
 
-
 rename-ask:
 	@read -p "Enter the new module name: " new_module_name; \
 	echo $$new_module_name > new_module_name.txt
-
 
 rename-module:
 	@NEW_MODULE_NAME=$$(cat new_module_name.txt); \
@@ -32,6 +30,7 @@ rename-cleanup:
 	find . -name "*.tmpl-e" -type f -delete
 	rm new_module_name.txt
 
+###################################################################
 .PHONY: generate
 generate:
 	cd maker && make generate
