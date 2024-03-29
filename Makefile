@@ -29,26 +29,3 @@ rename-cleanup:
 	find . -name "*.go-e" -type f -delete
 	find . -name "*.tmpl-e" -type f -delete
 	rm new_module_name.txt
-
-###################################################################
-.PHONY: generate
-generate:
-	cd maker && make generate
-###################################################################
-.PHONY: add-grpc-service
-add-grpc-service:
-	@read -p "Enter service name: " SERVICE_NAME; \
-	read -p "Enter service port: " SERVICE_PORT; \
-	read -p "Enter service path: " SERVICE_PATH; \
-	if [ -f services.yaml ]; then \
-		echo "" >> maker/service.yaml; \
-	else \
-		echo "services:" > maker/service.yaml; \
-	fi; \
-	echo "  - name: $$SERVICE_NAME" >> maker/service.yaml; \
-	echo "    port: $$SERVICE_PORT" >> maker/service.yaml; \
-	echo "    path: $$SERVICE_PATH" >> maker/service.yaml
-###################################################################
-.PHONY: run
-run:
-	go run .
